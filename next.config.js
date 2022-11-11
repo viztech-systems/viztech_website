@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone',
   env:{
     WEBSITE_URL : process.env.WEBSITE_URL,
     MONGODB_URL : process.env.MONGODB_URL,
