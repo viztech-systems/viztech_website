@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+//   reactStrictMode: true,
+//   swcMinify: true,
 //   env:{
 //     WEBSITE_URL : process.env.WEBSITE_URL,
 //     MONGODB_URL : process.env.MONGODB_URL,
