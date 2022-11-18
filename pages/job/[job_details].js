@@ -22,7 +22,7 @@ const JobDetails = () => {
     fullName: "",
     phone_number: "",
     emailID: "",
-    notice_period: "",
+    key_skills: "",
     comments: "",
     resumeURL: "",
   });
@@ -74,7 +74,7 @@ const JobDetails = () => {
       fullName: "",
       phone_number: "",
       emailID: "",
-      notice_period: "",
+      key_skills: "",
       comments: "",
       resumeURL: "",
     });
@@ -162,7 +162,7 @@ const JobDetails = () => {
                   <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-6">
                     <input
                       type="text"
-                      placeholder="Applying for"
+                      placeholder="Applying for*"
                       className="p-4 bg-[#E6E6E6] flex-none lg:flex-1 rounded-md italic text-gray-700"
                       name="applyingFor"
                       value={candidateData.applyingFor}
@@ -201,11 +201,11 @@ const JobDetails = () => {
                   </div>
                   <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-6">
                     <input
-                      type="number"
-                      placeholder="Notice period in days*"
+                      type="text"
+                      placeholder="key skills*"
                       className="p-4 bg-[#E6E6E6] flex-none lg:flex-1 rounded-md"
-                      name="notice_period"
-                      value={candidateData.notice_period}
+                      name="key_skills"
+                      value={candidateData.key_skills}
                       onChange={handleChange}
                       required
                     />
@@ -264,7 +264,7 @@ const JobDetails = () => {
                         </label>
                       </div>
                       <p className="text-xs text-gray-500">
-                        only pdf of max size 5MB
+                        only pdf of max size 4MB
                       </p>
                     </div>
                   )}
