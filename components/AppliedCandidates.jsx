@@ -10,7 +10,7 @@ const AppliedCandidates = () => {
   const tableHeadders = [
     "Name",
     "Applying for",
-    "Notice period",
+    "Key Skills",
     "Comments",
     "Resume",
     "Action",
@@ -33,21 +33,21 @@ const AppliedCandidates = () => {
           </div>
           {!resumes.length ? (
             <div className=" flex justify-center p-4">
-          <div className="lds-spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+              <div className="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           ) : (
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg my-4">
               <table className="w-full text-left text-gray-500">
@@ -87,7 +87,7 @@ const AppliedCandidates = () => {
                         </div>
                       </th>
                       <td className="py-4 px-6">{resume.applyingFor}</td>
-                      <td className="py-4 px-6">{resume.notice_period} days</td>
+                      <td className="py-4 px-6">{resume.key_skills} days</td>
                       <td className="py-4 px-6 max-w-sm">{resume.comments}</td>
                       <td className="py-4 px-6">
                         <a

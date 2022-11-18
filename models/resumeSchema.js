@@ -5,7 +5,7 @@ const resumeSchema = mongoose.Schema({
     fullName: String,
     phone_number: String,
     emailID: String,
-    notice_period: String,
+    key_skills: String,
     comments: String,
     resumeURL: String,
 });

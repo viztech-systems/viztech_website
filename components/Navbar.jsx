@@ -34,7 +34,7 @@ const Navbar = () => {
           aria-label="logo"
         >
           <span>
-            <NavLogo color={"#3E1FFF"} height={30} />
+            <NavLogo color={"#2a14b5"} height={30} />
           </span>
         </Link>
 

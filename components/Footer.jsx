@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="space-y-4 mb-8">
             <div className="flex space-x-5">
               <span className="rounded">
-                <FooterLogo bgColor={"#fff"} color={"#3E1FFF"} width={150} />
+                <FooterLogo bgColor={"#fff"} color={"#2a14b5"} width={150} />
               </span>
             </div>
             <p className="text-white text-sm lg:text-base md:w-[70%]">
