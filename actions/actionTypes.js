@@ -7,3 +7,6 @@ export const DELETE_JOB = "DELETE_JOB";
 export const FETCH_RESUMES = "FETCH_RESUMES";
 export const CREATE_RESUME = "CREATE_RESUME";
 export const DELETE_RESUME = "DELETE_RESUME";
+
+export const START_LOADING = "START_LOADING"
+export const END_LOADING = "END_LOADING"

@@ -1,12 +1,14 @@
 import * as axiosAPI from "../axios";
 
-import {FETCH_RESUMES, CREATE_RESUME, DELETE_RESUME} from './actionTypes'
+import {FETCH_RESUMES, CREATE_RESUME, DELETE_RESUME, START_LOADING, END_LOADING} from './actionTypes'
 
 export const getResumes = () => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await axiosAPI.fetchResumes();
 
     dispatch({ type: FETCH_RESUMES, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log("FETCH_RESUMES error:", error);
   }

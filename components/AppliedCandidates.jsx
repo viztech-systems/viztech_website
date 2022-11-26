@@ -5,7 +5,7 @@ import { getResumes, deleteResume } from "../actions/Resumes";
 
 const AppliedCandidates = () => {
   const dispatch = useDispatch();
-  const resumes = useSelector((state) => state.resumeReducer);
+  const { resumes, isLoading } = useSelector((state) => state.resumeReducer);
 
   const tableHeadders = [
     "Name",
@@ -20,6 +20,8 @@ const AppliedCandidates = () => {
     dispatch(getResumes());
   }, [dispatch]);
 
+  if( !resumes.length && !isLoading ) return <div className="my-10 flex justify-center"><p>No resumes yet...</p></div>;
+
   return (
     <>
       <div className="pt-3 pb-10">
@@ -31,7 +33,7 @@ const AppliedCandidates = () => {
               </a>
             </div>
           </div>
-          {!resumes.length ? (
+          {isLoading ? (
             <div className=" flex justify-center p-4">
               <div className="lds-spinner">
                 <div></div>
@@ -65,9 +67,9 @@ const AppliedCandidates = () => {
                   </tr>
                 </thead>
                 <tbody className="text-sm">
-                  {resumes?.map((resume) => (
+                  {resumes?.map((resume, index) => (
                     <tr
-                      key={resume._id}
+                      key={index}
                       className="bg-white border-b border-gray-300 hover:bg-gray-200 "
                     >
                       <th
@@ -79,19 +81,19 @@ const AppliedCandidates = () => {
                         </span>
                         <div className="pl-3">
                           <div className="text-base text-gray-600 font-semibold">
-                            {resume.fullName}
+                            {resume?.fullName}
                           </div>
                           <div className="font-normal text-gray-700">
-                            {resume.emailID}
+                            {resume?.emailID}
                           </div>
                         </div>
                       </th>
-                      <td className="py-4 px-6">{resume.applyingFor}</td>
-                      <td className="py-4 px-6">{resume.key_skills}</td>
-                      <td className="py-4 px-6 max-w-sm">{resume.comments}</td>
+                      <td className="py-4 px-6">{resume?.applyingFor}</td>
+                      <td className="py-4 px-6">{resume?.key_skills}</td>
+                      <td className="py-4 px-6 max-w-sm">{resume?.comments}</td>
                       <td className="py-4 px-6">
                         <a
-                          href={resume.resumeURL}
+                          href={resume?.resumeURL}
                           target="_blank"
                           rel="noreferrer"
                           className="font-medium text-blue-500 hover:underline md:mx-1 my-1"
@@ -102,7 +104,7 @@ const AppliedCandidates = () => {
                       <td className="py-4 px-6">
                         <button
                           type="button"
-                          onClick={() => dispatch(deleteResume(resume._id))}
+                          onClick={() => dispatch(deleteResume(resume?._id))}
                           className="text-xl text-red-500 md:ml-3 my-1"
                         >
                           <BsFillTrashFill />
