@@ -155,10 +155,10 @@ export const createResume = async (req, res) => {
   try {
     const resumeData = req.body;
 
-    const existedResume = await Resumes.findOne({ email: resumeData.emailID });
+    const existedResume = await Resumes.find({ emailID: resumeData.emailID });
 
-    if (existedResume) {
-      const data = await Resumes.findOneAndUpdate({ email: resumeData.emailID }, resumeData, { new: true });
+    if (existedResume.length) {
+      const data = await Resumes.findOneAndUpdate({ emailID: resumeData.emailID }, resumeData, { new: true });
       return res.status(200).json(data);
 
     } else {

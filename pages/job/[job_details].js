@@ -8,7 +8,7 @@ import { createResume } from "../../actions/Resumes";
 
 const JobDetails = () => {
   const dispatch = useDispatch();
-  const job = useSelector((state) => state.jobsReducer);
+  const { jobs } = useSelector((state) => state.jobsReducer);
 
   const router = useRouter();
   const { job_details } = router.query;
@@ -97,7 +97,7 @@ const JobDetails = () => {
           </p>
         </div>
 
-        {job.length > 0 ? (
+        {jobs.length > 0 ? (
           <div className=" flex justify-center p-4">
             <div className="lds-spinner">
               <div></div>
@@ -118,33 +118,33 @@ const JobDetails = () => {
           <div>
             <div className="bg-white p-4 my-4 space-y-6">
               <div>
-                <h1 className="text-3xl font-bold">{job?.title}</h1>
+                <h1 className="text-3xl font-bold">{jobs?.title}</h1>
               </div>
               <div>
                 <div className="inline-grid grid-cols-2 sm:grid-cols-4 gap-2">
                   <div className="inline-flex justify-center items-center border-2 border-gray-900 rounded-[100px] py-2 px-3 text-sm">
-                    Location: {job?.location}
+                    Location: {jobs?.location}
                   </div>
                   <div className="inline-flex justify-center items-center border-2 border-gray-900 rounded-[100px] py-2 px-3 text-sm">
-                    {job?.experience} years experience
+                    {jobs?.experience} years experience
                   </div>
                   <div className="inline-flex justify-center items-center border-2 border-gray-900 rounded-[100px] py-2 px-3 text-sm">
-                    {job?.vacancies} vacancies
+                    {jobs?.vacancies} vacancies
                   </div>
                   <div className="inline-flex justify-center items-center border-2 border-gray-900 rounded-[100px] py-2 px-3 text-sm">
-                    Salary: {job?.salary}
+                    Salary: {jobs?.salary}
                   </div>
                 </div>
               </div>
               <div>
                 <h1 className="text-xl">
                   <span className="font-semibold">Skills Needed:</span>{" "}
-                  {job?.skills}
+                  {jobs?.skills}
                 </h1>
               </div>
               <div className="space-y-2">
                 <h1 className="text-xl font-semibold">Full description:</h1>
-                <h2>{job?.description}</h2>
+                <h2>{jobs?.description}</h2>
               </div>
             </div>
 

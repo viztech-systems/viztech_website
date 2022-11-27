@@ -5,7 +5,7 @@ import { getJobs } from "../actions/jobs";
 import { useSelector, useDispatch } from "react-redux";
 
 const Careers = () => {
-  const jobs = useSelector((state) => state.jobsReducer);
+  const { jobs, isLoading } = useSelector((state) => state.jobsReducer);
   const dispatch = useDispatch();
 
   const truncate = (str, n) => {
@@ -15,6 +15,8 @@ const Careers = () => {
   useEffect(() => {
     dispatch(getJobs());
   }, [dispatch]);
+
+  if( !jobs.length && !isLoading ) return <div className="my-10 flex justify-center"><p>No jobs posted yet...</p></div>;
 
   return (
     <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
@@ -38,7 +40,7 @@ const Careers = () => {
         </p>
       </div>
 
-      {!jobs.length ? (
+      {isLoading ? (
         <div className=" flex justify-center p-4">
           <div className="lds-spinner">
             <div></div>

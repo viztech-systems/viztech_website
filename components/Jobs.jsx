@@ -11,7 +11,7 @@ import {
 
 const Jobs = ({ setCurrentId, setShow }) => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.jobsReducer);
+  const { jobs, isLoading } = useSelector((state) => state.jobsReducer);
 
   const truncate = (str, n) => {
     return str?.length > n ? str.slice(0, n) + " ..." : str;
@@ -26,9 +26,11 @@ const Jobs = ({ setCurrentId, setShow }) => {
     dispatch(getJobs());
   }, [dispatch]);
 
+  if( !jobs.length && !isLoading ) return <div className="my-10 flex justify-center"><p>No jobs created yet...</p></div>;
+
   return (
     <>
-      {!jobs.length ? (
+      {isLoading ? (
         <div className=" flex justify-center p-4">
           <div className="lds-spinner">
             <div></div>

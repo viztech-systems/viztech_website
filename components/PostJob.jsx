@@ -5,7 +5,7 @@ import { BiPlus } from "react-icons/bi";
 
 const PostJob = ({ show, setShow, currentId, setCurrentId }) => {
   const job = useSelector((state) =>
-    currentId ? state.jobsReducer.find((j) => j._id == currentId) : null
+    currentId ? state.jobsReducer.jobs.find((j) => j._id == currentId) : null
   );
   const dispatch = useDispatch();
 

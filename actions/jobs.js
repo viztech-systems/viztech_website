@@ -6,15 +6,19 @@ import {
   CREATE_JOB,
   UPDATE_JOB,
   DELETE_JOB,
+  START_LOADING,
+  END_LOADING
 } from "./actionTypes";
 
 //Action Creators
 
 export const getJobs = () => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await axiosAPI.fetchJobs();
 
     dispatch({ type: FETCH_ALL_JOBS, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log("FETCH_ALL_JOBS error:", error);
   }
@@ -22,9 +26,11 @@ export const getJobs = () => async (dispatch) => {
 
 export const getJob = (id) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await axiosAPI.fetchJob(id);
 
     dispatch({ type: FETCH_JOB, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log("FETCH_JOB error:", error);
   }
