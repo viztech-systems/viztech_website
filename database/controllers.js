@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 
 import Jobs from "../models/jobSchema";
 import Resumes from "../models/resumeSchema";
+import approvedResumes from "../models/approvedResumeSchema";
 import Admin from "../models/adminSchema";
 
 //  Controllers //
@@ -183,6 +184,55 @@ export const deleteResume = async (req, res) => {
     res.status(404).json({ error: "Resume Id not provided for deleting..." });
   } catch (error) {
     res.status(404).json({ error: "Error while deleting resume" });
+    console.log(error);
+  }
+};
+
+export const getApprovedResumes = async (req, res) => {
+  try {
+    const resumes = await approvedResumes.find({});
+
+    if (!resumes) return res.status(404).json({ error: "Data not found" });
+
+    res.status(200).json(resumes);
+  } catch (error) {
+    res.status(404).json({ error: "Error while fetching approved resumes" });
+    console.log(error);
+  }
+};
+
+export const approveResume = async (req, res) => {
+  try {
+    const resumeData = req.body;
+
+    const existedResume = await approvedResumes.find({ emailID: resumeData.emailID });
+
+    if (existedResume.length) {
+      const data = await approvedResumes.findOneAndUpdate({ emailID: resumeData.emailID }, resumeData, { new: true });
+      return res.status(200).json(data);
+
+    } else {
+      approvedResumes.create(resumeData, function (err, data) {
+        return res.status(200).json(data);
+      });
+    }
+  } catch (error) {
+    res.status(404).json({ error: "Error while approving resume" });
+    console.log(error);
+  }
+};
+
+export const deleteApprovedResume = async (req, res) => {
+  try {
+    const { resumeId } = req.query;
+
+    if (resumeId) {
+      const resume = await approvedResumes.findByIdAndDelete(resumeId);
+      return res.status(200).json(resume);
+    }
+    res.status(404).json({ error: "Resume Id not provided for deleting" });
+  } catch (error) {
+    res.status(404).json({ error: "Error while deleting approved resume" });
     console.log(error);
   }
 };

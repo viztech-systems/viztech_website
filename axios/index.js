@@ -12,5 +12,10 @@ export const fetchResumes = () => axios.get(`${url}/resume`, { crossDomain: true
 export const createResume = (resume) => axios.post(`${url}/resume`, resume, { crossDomain: true })
 export const deleteResume = (id) => axios.delete(`${url}/resume?resumeId=${id}`, { crossDomain: true })
 
+export const fetchApprovedResumes = () => axios.get(`${url}/resume/approveresume`, { crossDomain: true })
+export const approveResume = (resume) => axios.post(`${url}/resume/approveresume`, resume, { crossDomain: true })
+export const deleteApprovedResume = (id) => axios.delete(`${url}/resume/approveresume?resumeId=${id}`, { crossDomain: true })
+
+
 export const signUpAdmin = (adminData) => axios.post(`${url}/signup`, adminData, { crossDomain: true })
 export const signInAdmin = (adminData) => axios.post(`${url}/signin`, adminData, { crossDomain: true })
