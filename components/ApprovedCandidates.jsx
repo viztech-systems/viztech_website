@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import {
-  BsFillCheckSquareFill,
-  BsFillTrashFill,
-  BsPersonCircle,
-} from "react-icons/bs";
-import { getResumes, deleteResume, ApproveResume } from "../actions/Resumes";
+import { BsFillTrashFill, BsPersonCircle } from "react-icons/bs";
+import { getApprovedResumes, deleteApprovedResume } from "../actions/Resumes";
 
-const AppliedCandidates = () => {
+const ApprovedCandidates = () => {
   const dispatch = useDispatch();
-  const { resumes, isLoading } = useSelector((state) => state.resumeReducer);
+  const { resumes, isLoading } = useSelector(
+    (state) => state.approveResumeReducer
+  );
 
   const tableHeadders = [
     "Name",
@@ -21,14 +19,14 @@ const AppliedCandidates = () => {
     "Action",
   ];
 
-  const approveResume = (resume) => {
-    dispatch(ApproveResume(resume));
+  const deleteResume = (id) => {
+    dispatch(deleteApprovedResume(id));
 
-    toast.success("resume approved");
+    toast.success("resume deleted");
   };
 
   useEffect(() => {
-    dispatch(getResumes());
+    dispatch(getApprovedResumes());
   }, [dispatch]);
 
   if (!resumes.length && !isLoading)
@@ -121,14 +119,7 @@ const AppliedCandidates = () => {
                         <div>
                           <button
                             type="button"
-                            onClick={() => approveResume(resume)}
-                            className="text-xl text-green-500 md:ml-3 my-1"
-                          >
-                            <BsFillCheckSquareFill />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => dispatch(deleteResume(resume?._id))}
+                            onClick={() => deleteResume(resume?._id)}
                             className="text-xl text-red-500 md:ml-3 my-1"
                           >
                             <BsFillTrashFill />
@@ -147,4 +138,4 @@ const AppliedCandidates = () => {
   );
 };
 
-export default AppliedCandidates;
+export default ApprovedCandidates;

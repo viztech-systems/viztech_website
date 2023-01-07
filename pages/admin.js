@@ -16,7 +16,7 @@ const Admin = () => {
     setValue(val);
   };
 
-  const filters = ["Jobs", "Applied Candidates"];
+  const filters = ["Jobs", "Applied Candidates", "Approved Candidates"];
 
   useEffect(() => {
     if (!localStorage.getItem("profile")) {
