@@ -209,8 +209,10 @@ export const approveResume = async (req, res) => {
 
     if (existedResume.length) {
       const data = await approvedResumes.findOneAndUpdate({ emailID: resumeData.emailID }, resumeData, { new: true });
-      return res.status(200).json(data);
 
+      await Resumes.findByIdAndDelete({ _id: resumeData._id });
+
+      return res.status(200).json(data);
     } else {
       approvedResumes.create(resumeData, function (err, data) {
         return res.status(200).json(data);

@@ -60,6 +60,7 @@ export const ApproveResume = (resume) => async (dispatch) => {
   try {
     const { data } = await axiosAPI.approveResume(resume);
 
+    dispatch({ type: DELETE_RESUME, payload: data._id });
     dispatch({ type: APPROVE_RESUME, payload: data });
   } catch (error) {
     console.log("APPROVE_RESUME error:", error);
