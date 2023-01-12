@@ -25,7 +25,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-100 pb-4">
       <div className="max-w-screen-2xl px-4 md:px-8 mx-auto ">
         <div className="bg-banner py-5 lg:py-10 flex justify-center rounded-xl rounded-bl-[100px] rounded-tr-[100px]">
           <p className="text-white font-bold text-xl lg:text-4xl">
