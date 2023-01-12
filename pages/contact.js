@@ -190,7 +190,7 @@ const Contact = () => {
                   className="w-full h-40 bg-[#E6E6E6] text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 p-4"
                 ></textarea>
               <div>
-                <button className="px-7 lg:px-10 py-3 lg:py-4 text-sm lg:text-base font-semibold text-white bg-[#6B54F5] hover:bg-[#4e38cc] rounded-md">
+                <button className="px-7 lg:px-10 py-3 lg:py-4 text-sm lg:text-base font-semibold text-white bg-[#6B54F5] hover:bg-[#4e38cc] rounded-md" disabled>
                   Send message
                 </button>
               </div>
