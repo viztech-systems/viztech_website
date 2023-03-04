@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Website Hosting & Setup Details
 
-## Getting Started
+## Database details
 
-First, run the development server:
+- Login to https://www.mongodb.com/ as a `viztech2021@gmail.com` (Note: use "Sign in with Google")
+- After successful login, you will see `Clustor0`, in this, click the button `Browse Collection`.
+- Now you can see list of databases with their collections.
+  - `DB name: viztech_systems`
+- Expand the database "viztech_systems", you will list of collections.
+  - `collections name: admins, approvedresumes, jobs, resumes`
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## AWS details
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Login on AWS as a `viztech2021@gmail.com`
+- Search S3. Here you will a bucket `viztechresumes`. In this all CVs are stored.
+- Search Amplify. Here you will see list of deployed websites.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## GitHub details
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Login as a `viztech2021@gmail.com`
+- You will find the repositories of hosted websites on AWS.
+- `repositories names: KreativeSearch-website, viztech_website`
+  (Note: If you push changes to master branch then it will affect the hosted website also because these branches are connected to the AWS amplify).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Domain details
 
-## Learn More
+- `kreativesearch.com` - this domain is purchased from `lcn.com`
+- `viztech.in`- this domain purchased from `domains.google.com` (login as hr@viztech.in)
 
-To learn more about Next.js, take a look at the following resources:
+## Very Important
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- If you change your domain then you have to configure it from AWS amplify also.
+- To do that, search Amplify on AWS search bar, select the hosted website's page.
+- You can see `Domain management` on the left menu panel.
+- And also you have to change domain value in the env also. On the same left panel, you go to the `Environment variables`. Change the value of `WEBSITE_URL`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## How to run website locally
 
-## Deploy on Vercel
+- First of all, if you are about to run the website for first time, then you need to install some packages. So hit the command `npm install` on terminal
+- Then hit the command `npm run dev` on terminal
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Website Login details
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- To create new login details or in case you forgot login credentials then follow below steps
+  - Install postman
+  - open new page, select `POST` method
+  - Copy this url `<YOUR DOMAIN>/signup`
+  - send your new login credentials in this format
+    ```
+    {
+    "email": <YOUR EMAIL ID>,
+    "password": <PASSWORD>
+    }
+    ```
+- Now hit the `send` button. (Note: You will recieve token and result in response if user created successfully)
+
+## Changing website contents
+
+- To change the contents, all files are present in the folder `pages`
